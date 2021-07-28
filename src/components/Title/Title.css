@@ -1,0 +1,21 @@
+.title {
+  font-family: 'Inter';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 22px;
+  line-height: 1.22;
+  color: #000;
+  margin: 0;
+  width: 100%;
+  letter-spacing: -0.04em;
+  padding-bottom: 23px;
+  border-bottom: 1px solid #000;
+}
+
+@media screen and (max-width: 767px) {
+  .title {
+    font-size: 18px;
+    line-height: 1.22;
+    padding-bottom: 28px;
+  }
+}
