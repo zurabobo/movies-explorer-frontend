@@ -1,0 +1,9 @@
+.profile__account-link {
+  display: block;
+  transition: opacity .3s ease;
+}
+
+.profile__account-link:hover {
+  opacity: .7;
+}
+

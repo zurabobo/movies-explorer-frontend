@@ -1,0 +1,127 @@
+.about-project {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 110px 70px;
+  box-sizing: border-box;
+}
+
+.about-project__items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  justify-items: center;
+  padding-top: 70px;
+  padding-bottom: 110px;
+}
+
+.about-project__items-container {
+  max-width: 550px;
+  width: 100%;
+}
+
+.about-project__items-title {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  color: #000;
+  max-width: 550px;
+  margin: 0 0 26px 0;
+}
+
+.about-project__items-text {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.43;
+  color: #000;
+  margin: 0;
+}
+
+.about-project__chart {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-row-gap: 5px;
+  padding: 0;
+}
+
+.about-project__chart-text {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  text-align: center;
+  color: #000;
+  background: #f2f2f2;
+  padding: 9px 0;
+  margin: 0;
+}
+
+.about-project__chart-text_bgcolor_black {
+  background: #000;
+  color: #FFF;
+}
+
+.about-project__chart-subtext {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.21;
+  text-align: center;
+  color: #A0A0A0;
+}
+
+@media screen and (max-width: 1023px) {
+  .about-project {
+    padding: 90px 50px;
+  }
+
+  .about-project__items {
+    gap: 30px;
+    padding-bottom: 93px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about-project {
+    padding: 70px 18px;
+  }
+
+  .about-project__items-title {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .about-project__items-text {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .about-project__items {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 56px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .about-project__chart {
+    grid-template-columns: 2fr 4fr;
+  }
+
+  .about-project__chart-text {
+    margin: 11px 0;
+    font-size: 11px;
+    line-height: 1.18;
+  }
+
+  .about-project__chart-subtext {
+    margin-top: 10px;
+    font-size: 11px;
+    line-height: 1.18;
+  }
+}

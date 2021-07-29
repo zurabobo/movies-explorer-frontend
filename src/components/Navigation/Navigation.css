@@ -1,0 +1,41 @@
+.navigation__container {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation__link {
+  text-decoration: none;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 1.38px;
+  text-align: right;
+  color: #000;
+  margin: 0;
+  opacity: 1;
+  transition: opacity .3s ease;
+}
+
+.navigation__link:last-of-type {
+  margin-left: 16px;
+}
+
+.navigation__link:hover {
+  opacity: .7;
+}
+
+.navigation__link_active {
+  font-weight: 500;
+}
+
+@media screen and (max-width: 1023px) {
+  .navigation__container {
+    display: none;
+  }
+
+  .navigation__account-link {
+    display: none;
+  }
+}
