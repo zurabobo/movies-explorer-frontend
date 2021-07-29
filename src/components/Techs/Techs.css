@@ -63,6 +63,11 @@
     padding: 90px 50px 45px 50px;
   }
 
+  .techs-list {
+    grid-template-columns: repeat(auto-fit, 84px);
+    padding: 50px 0 35px 0;
+  }
+
   .techs-article__header {
     padding-bottom: 66px;
   }
@@ -86,7 +91,20 @@
   }
 
   .techs-list {
-    grid-template-columns: repeat(auto-fit, minmax(84px, 84px));
+    grid-template-rows: repeat(auto-fill, minmax(57px, 1fr));
+    grid-template-columns: repeat(auto-fit, 84px);
     padding: 50px 0 35px 0;
+  }
+
+  .techs-list__item {
+    font-size: 12px;
+    line-height: 1.25;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .techs-list {
+    grid-template-rows: repeat(auto-fill, minmax(57px, 1fr));
+    grid-template-columns: repeat(2, 84px);
   }
 }
