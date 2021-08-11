@@ -116,8 +116,7 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-  //baseUrl: 'https://api.movies-explorer.zb.nomoredomains.rocks',
-  baseUrl: 'http://localhost:3000',
+  baseUrl: 'https://api.movies-explorer.zb.nomoredomains.rocks',
   headers: {
     'Content-Type': 'application/json'
   }
