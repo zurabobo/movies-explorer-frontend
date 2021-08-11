@@ -1,34 +1,91 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import AuthForm from "../AuthForm/AuthForm";
+import React, { useState, useEffect} from "react";
 import "../Register/Register.css"
 
-function Register() {
+import { Link } from "react-router-dom";
+import AuthForm from "../AuthForm/AuthForm";
+import { useFormValidation } from '../../hooks/useFormValidation';
+
+
+function Register({ onRegister, isLoadingRegister, regResStatus }) {
+
+  const [isRegistrationErr, setIsRegistrationErr] = useState(false);
+  const [registrationErrMessage, setRegistrationErrMessage] = useState('');
+
+  const {
+    values,
+    errors,
+    isValid,
+    handleChange,
+    resetForm
+  } = useFormValidation({});
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    onRegister(values);
+  }
+
+  const errorHandler = () => {
+    if (regResStatus) {
+      switch (regResStatus) {
+        case 409:
+          setIsRegistrationErr(true);
+          setRegistrationErrMessage('Пользователь с таким email уже зарегистрирован');
+          break;
+        case 400:
+          setIsRegistrationErr(true);
+          setRegistrationErrMessage('При регистрации пользователя произошла ошибка');
+          break;
+        case 200:
+          setIsRegistrationErr(false);
+          setRegistrationErrMessage('Вы успешно зарегистрировались!');
+          resetForm();
+          break;
+        default:
+          setIsRegistrationErr(true);
+          setRegistrationErrMessage('Пользователь с таким email уже зарегистрирован');
+          break;
+      };
+    };
+  };
+
+  useEffect(() => {
+    errorHandler();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [regResStatus]);
+
 
   return (
     <main className="register">
       <AuthForm
+        isAuthErr={isRegistrationErr}
+        isLoading={isLoadingRegister}
+        authErrMessage={registrationErrMessage}
+        isValid={isValid}
+        onSubmit={handleSubmit}
         titleText={'Добро пожаловать!'}
         requestLink={
-          <p className="auth-form__request-text">Уже зарегистрированы? <Link to="/sign-in" className="auth-form__link">Войти</Link></p>
+          <p className="auth-form__request-text">Уже зарегистрированы? <Link to="/signin" className="auth-form__link">Войти</Link></p>
         }
         buttonTitle="Зарегистрироваться"
       >
         <label className="auth-form__input-label">Имя</label>
         <input className="auth-form__input"
-          type="text" name="name" id="name-input"
-          minLength="2" maxLength="40" required />
-        <span id="name-input-error" className="auth-form__input-error"></span>
+          type="text" name="name" id="register-name"
+          onChange={handleChange}
+          value={values.name || ''} minLength="2" maxLength="30" required />
+        <span id="name-input-error" className={errors.name ? "auth-form__input-error auth-form__input-error_visible" : "auth-form__input-error"}>{errors.name}</span>
+
         <label className="auth-form__input-label">E-mail</label>
         <input className="auth-form__input"
-          type="email" name="email" id="login-email"
+          type="email" name="email" value={values.email || ''} onChange={handleChange} id="register-email"
           required />
-        <span id="name-input-error" className="auth-form__input-error"></span>
+        <span id="register-email-error" className={errors.email ? "auth-form__input-error auth-form__input-error_visible" : "auth-form__input-error"}>{errors.email}</span>
+
         <label className="auth-form__input-label">Пароль</label>
         <input className="auth-form__input"
-          type="password" name="password" id="login-password"
-          required />
-        <span id="aname-input-error" className="auth-form__input-error">Что-то пошло не так...</span>
+          type="password" name="password" onChange={handleChange} id="register-password"
+          value={values.password || ''} minLength="8" maxLength="30" required />
+        <span id="register-password-error" className={errors.password ? "auth-form__input-error auth-form__input-error_visible" : "auth-form__input-error"}>{errors.password}</span>
       </AuthForm>
     </main>
   );

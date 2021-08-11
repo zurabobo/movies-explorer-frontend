@@ -4,7 +4,7 @@ import HeaderLogo from '../../images/header-logo.svg';
 import './Header.css';
 import Navigation from '../Navigation/Navigation';
 
-function Header({ loggedIn, onSignup, onSignin, onMenu }) {
+function Header({ loggedIn, onMenu }) {
 
   return (
       <header className={loggedIn ? "header header__grid-template" : "header"}>
@@ -12,8 +12,8 @@ function Header({ loggedIn, onSignup, onSignin, onMenu }) {
         <img alt="логотип movies-explorer" className="header__logo" src={HeaderLogo} />
       </Link>
       {loggedIn ? (<Navigation />) : (<nav className="header__auth-navlink-container">
-        <NavLink className="header__auth-navlink" to="/sign-up" onClick={onSignup}>Регистрация</NavLink>
-        <NavLink className="header__auth-navlink header__auth-navlink_bgcolor_black" to="/sign-in" onClick={onSignin}>Войти</NavLink>
+        <NavLink className="header__auth-navlink" to="/signup">Регистрация</NavLink>
+        <NavLink className="header__auth-navlink header__auth-navlink_bgcolor_black" to="/signin">Войти</NavLink>
       </nav>)}
       {loggedIn &&
         (

@@ -4,33 +4,28 @@ import { useLocation } from 'react-router-dom';
 import SearchForm from '../SearchForm/SearchForm';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import MoreButton from '../MoreButton/MoreButton';
+import '../Movies/Movies.css';
 
-function SavedMovies() {
+function SavedMovies({ onGetMovies, userMovies, isSavedMovies, movies, onSubmit, onDeleteSavedMovie, onFilter, isShortMovie }) {
 
   let location = useLocation();
 
-  const MOVIES_CARD_LIST_DATA = [
-    {
-      id: 1,
-      isSaved: false,
-    },
-    {
-      id: 2,
-      isSaved: false,
-    },
-    {
-      id: 3,
-      isSaved: false,
-    },
-  ];
-
   return (
     <>
-      <SearchForm />
-      <FilterCheckbox />
-      <MoviesCardList data={MOVIES_CARD_LIST_DATA} locationPathname={location.pathname} />
-      <MoreButton buttonTitle="Ещё" />
+      <SearchForm onGetMovies={onGetMovies} />
+      <FilterCheckbox onFilter={onFilter} isShortMovie={isShortMovie} />
+      {movies.length > 0 ? (
+        <MoviesCardList
+          onGetMovies={onGetMovies}
+          userMovies={userMovies}
+          movies={movies}
+          isSavedMovies={isSavedMovies}
+          onSubmit={onSubmit}
+          locationPathname={location.pathname}
+          onDeleteSavedMovie={onDeleteSavedMovie} />
+      ) : (
+        <p className="movies-notification-message">У вас пока нет сохраненных фильмов</p>
+      )}
     </>
   )
 }

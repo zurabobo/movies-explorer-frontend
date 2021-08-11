@@ -2,10 +2,10 @@ import React from 'react';
 
 import './MoreButton.css';
 
-function MoreButton({ onClick, buttonTitle }) {
+function MoreButton({ onClick }) {
   return (
     <div className="more-btn__container">
-      <button className="more-btn" type="button" onClick={onClick}>{buttonTitle}</button>
+      <button className="more-btn" type="button" onClick={onClick}>Ещё</button>
     </div>
   )
 }
