@@ -2,6 +2,7 @@ import React from 'react';
 
 import './MoviesCard.css'
 import convertTime from '../../utils/convertTime';
+import { IMAGE_URL } from '../../utils/config';
 
 function MoviesCard({
   movie,
@@ -12,7 +13,6 @@ function MoviesCard({
   buttonTitle,
 }) {
 
-  const baseUrl = 'https://api.nomoreparties.co';
   const isLiked = !isSavedMovies && likedMovies(movie)
   const movieLikeBtnClassName = `${isLiked ? "movies-card__save-btn movies-card__saved-btn" : "movies-card__save-btn"}`;
 
@@ -23,12 +23,12 @@ function MoviesCard({
       duration: movie.duration || 0,
       year: movie.year || 'Нет данных',
       description: movie.description || 'Нет данных',
-      image: `${baseUrl}${movie.image ? movie.image.url : ''}`,
+      image: `${IMAGE_URL}${movie.image ? movie.image.url : ''}`,
       trailer: movie.trailerLink,
-      thumbnail: `${baseUrl}${movie.image.formats.thumbnail.url}`,
+      thumbnail: `${IMAGE_URL}${movie.image.formats.thumbnail.url}`,
       movieId: movie.id,
-      nameRU: movie.nameRU,
-      nameEN: movie.nameEN,
+      nameRU: movie.nameRU || 'Нет данных',
+      nameEN: movie.nameEN || 'Нет данных',
       isSaved: movie.isSaved,
     })
   }
@@ -41,7 +41,7 @@ function MoviesCard({
 
     <article className="movies-card">
       <a href={movie.trailerLink || movie.trailer} target="_blank" rel="noopener noreferrer nofollow" >
-        <img className="movies-card__image" src={isSavedMovies ? movie.image : `${baseUrl}${movie.image ? movie.image.url : movie.image}`}
+        <img className="movies-card__image" src={isSavedMovies ? movie.image : `${IMAGE_URL}${movie.image ? movie.image.url : movie.image}`}
           alt={movie.nameRU || movie.nameEN} />
       </a>
       {isSavedMovies ? (

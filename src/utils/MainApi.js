@@ -1,11 +1,13 @@
+import { MAIN_API_URL } from "./config";
+
 class MainApi {
-  constructor({ baseUrl, headers }) {
-    this._baseUrl = baseUrl;
+  constructor({ MAIN_API_URL, headers }) {
+    this._MAIN_API_URL = MAIN_API_URL;
     this._headers = headers;
   }
 
   register(data) {
-    return fetch(`${this._baseUrl}/signup`, {
+    return fetch(`${this._MAIN_API_URL}/signup`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
@@ -17,7 +19,7 @@ class MainApi {
   }
 
   authorize(data) {
-    return fetch(`${this._baseUrl}/signin`, {
+    return fetch(`${this._MAIN_API_URL}/signin`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
@@ -28,7 +30,7 @@ class MainApi {
   }
 
   checkToken(token) {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return fetch(`${this._MAIN_API_URL}/users/me`, {
       headers: {
         ...this._headers,
         Authorization: `Bearer ${token}`
@@ -37,7 +39,7 @@ class MainApi {
   }
 
   getUserInfo(token) {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return fetch(`${this._MAIN_API_URL}/users/me`, {
       headers: {
         ...this._headers,
         Authorization: `Bearer ${token}`
@@ -48,7 +50,7 @@ class MainApi {
 
 
   updateUserProfile(data, token) {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return fetch(`${this._MAIN_API_URL}/users/me`, {
       method: 'PATCH',
       headers: {
         ...this._headers,
@@ -62,7 +64,7 @@ class MainApi {
   }
 
   saveMovie(movie, token) {
-    return fetch(`${this._baseUrl}/movies`, {
+    return fetch(`${this._MAIN_API_URL}/movies`, {
       method: 'POST',
       headers: {
         ...this._headers,
@@ -85,7 +87,7 @@ class MainApi {
   }
 
   getSavedMovies(token) {
-    return fetch(`${this._baseUrl}/movies`, {
+    return fetch(`${this._MAIN_API_URL}/movies`, {
       headers: {
         ...this._headers,
         Authorization: `Bearer ${token}`
@@ -94,7 +96,7 @@ class MainApi {
   }
 
   deleteSavedMovie(id, token) {
-    return fetch(`${this._baseUrl}/movies/${id}`, {
+    return fetch(`${this._MAIN_API_URL}/movies/${id}`, {
       method: 'DELETE',
       headers: {
         ...this._headers,
@@ -116,7 +118,7 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-  baseUrl: 'https://api.movies-explorer.zb.nomoredomains.rocks',
+  MAIN_API_URL,
   headers: {
     'Content-Type': 'application/json'
   }

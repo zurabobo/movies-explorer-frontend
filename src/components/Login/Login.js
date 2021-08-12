@@ -99,7 +99,7 @@ function Login({ onLogin, isLoadingLogin, authResStatus, tokenResStatus }) {
         <label className="auth-form__input-label">E-mail</label>
         <input className="auth-form__input"
           type="email" name="email" value={values.email || ''} onChange={handleChange} id="login-email"
-          minLength="2" maxLength="30" required />
+          minLength="2" maxLength="30" pattern='.{2,}@.{2,}\.[a-zA-Z]{2,6}' required />
         <span id="login-email-error" className={errors.email ? "auth-form__input-error auth-form__input-error_visible" : "auth-form__input-error"}>{errors.email}</span>
 
         <label className="auth-form__input-label">Пароль</label>

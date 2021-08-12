@@ -30,7 +30,9 @@ function SearchForm({ onGetMovies }) {
     } else {
       setIsValid(false);
     }
+    return findedMovie;
   }, [findedMovie, error]);
+
 
 
   return (

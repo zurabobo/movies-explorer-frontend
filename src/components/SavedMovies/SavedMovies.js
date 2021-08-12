@@ -6,26 +6,25 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import '../Movies/Movies.css';
 
-function SavedMovies({ onGetMovies, userMovies, isSavedMovies, movies, onSubmit, onDeleteSavedMovie, onFilter, isShortMovie }) {
+function SavedMovies({ isLoading, isNoSavedMoviesFound, onGetMovies, userMovies, isSavedMovies, movies, onSubmit, onDeleteSavedMovie, onFilter, isShortMovie }) {
 
   let location = useLocation();
 
   return (
     <>
       <SearchForm onGetMovies={onGetMovies} />
-      <FilterCheckbox onFilter={onFilter} isShortMovie={isShortMovie} />
-      {movies.length > 0 ? (
-        <MoviesCardList
-          onGetMovies={onGetMovies}
-          userMovies={userMovies}
-          movies={movies}
-          isSavedMovies={isSavedMovies}
-          onSubmit={onSubmit}
-          locationPathname={location.pathname}
-          onDeleteSavedMovie={onDeleteSavedMovie} />
-      ) : (
-        <p className="movies-notification-message">У вас пока нет сохраненных фильмов</p>
+      {!isLoading && isNoSavedMoviesFound && (
+        <p className="movies-notification-message">по вашему запросу ничего не найдено</p>
       )}
+      <FilterCheckbox onFilter={onFilter} isShortMovie={isShortMovie} />
+      <MoviesCardList
+        onGetMovies={onGetMovies}
+        userMovies={userMovies}
+        movies={movies}
+        isSavedMovies={isSavedMovies}
+        onSubmit={onSubmit}
+        locationPathname={location.pathname}
+        onDeleteSavedMovie={onDeleteSavedMovie} />
     </>
   )
 }

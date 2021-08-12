@@ -29,6 +29,7 @@ function App() {
   const [isLoadingMovies, setIsLoadingMovies] = useState(false);
 
   const [isNoMoviesFound, setIsNoMoviesFound] = useState(false);
+  const [isNoSavedMoviesFound, setIsNoSavedMoviesFound] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [userMovies, setUserMovies] = useState([]);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -114,7 +115,7 @@ function App() {
         .then((res) => {
           setCurrentUser(res);
           setUpdateUserResStatus(res.status);
-          localStorage.setItem('currentUser', JSON.stringify(data));
+          localStorage.setItem('currentUser', JSON.stringify(res));
         })
         .catch((err) => {
           setUpdateUserResStatus(err);
@@ -179,8 +180,8 @@ function App() {
     const selectedMovie = userMovies.find((item) => item.movieId === movieId);
     mainApi.deleteSavedMovie(selectedMovie._id, token)
       .then(() => {
-          const newMoviesList = userMovies.filter((c) => c.movieId !== movieId);
-          setUserMovies(newMoviesList);
+        const newMoviesList = userMovies.filter((c) => c.movieId !== movieId);
+        setUserMovies(newMoviesList);
       })
       .catch((err) => {
         console.log(err)
@@ -193,15 +194,13 @@ function App() {
 
   const handleSearchSavedMovies = (keyword) => {
     const key = new RegExp(keyword, "gi");
-    const findedMovies = userMovies.filter(
-      (item) => key.test(item.nameRU) || key.test(item.nameEN)
-    );
+    const findedMovies = userMovies.filter((m) => key.test(m.nameRU) || key.test(m.nameEN));
     if (findedMovies.length === 0) {
-      setIsNoMoviesFound(true);
+      setIsNoSavedMoviesFound(true);
     } else {
-      setIsNoMoviesFound(true);
-      setUserMovies(findedMovies);
+      setIsNoSavedMoviesFound(false);
     }
+    setUserMovies(findedMovies);
   }
 
   const handleCheckBox = () => {
@@ -227,8 +226,41 @@ function App() {
       setIsLoading(true)
       setIsLoadingMovies(true)
       const token = localStorage.getItem('jwt');
+      Promise.all([
+        mainApi.getUserInfo(token),
+        mainApi.getSavedMovies(token),
+        moviesApi.getMovies(),
+      ])
+        .then(([userData, savedMovies, allMovies]) => {
+          localStorage.setItem("currentUser", JSON.stringify(userData));
+          setCurrentUser(userData);
+
+          const savedMoviesList = savedMovies.filter((item) => item.owner === userData._id).reverse();
+          localStorage.setItem("userMovies", JSON.stringify(savedMoviesList));
+          setUserMovies(savedMoviesList);
+
+          localStorage.setItem("movies", JSON.stringify(allMovies));
+          setMovies(allMovies);
+
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(() => {
+          setIsLoadingMovies(false)
+          setIsLoading(false)
+        });
+    }
+  }, [loggedIn]);
+
+  useEffect(() => {
+    checkToken()
+    if (loggedIn) {
+      setIsLoading(true)
+      setIsLoadingMovies(true)
+      const token = localStorage.getItem('jwt');
       mainApi.getAppData(token)
-      .then(([userData, savedMovies]) => {
+        .then(([userData, savedMovies]) => {
           localStorage.setItem("currentUser", JSON.stringify(userData));
           setCurrentUser(userData);
 
@@ -250,18 +282,6 @@ function App() {
     checkSavedMovie(sortedMovies);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userMovies]);
-
-  useEffect(() => {
-    moviesApi.getMovies()
-      .then((allMovies) => {
-        setMovies(allMovies);
-        localStorage.setItem("movies", JSON.stringify(allMovies));
-      })
-      .catch((err) => {
-        console.log(`Ошибка: ${err}`);
-        localStorage.removeItem("movies");
-      });
-  }, [currentUser]);
 
   const handleOpenMenu = () => {
     setMenuIsOpen(true);
@@ -319,6 +339,7 @@ function App() {
             component={SavedMovies}
             isLoading={isLoadingMovies}
             movies={filterShortMovies(userMovies)}
+            isNoSavedMoviesFound={isNoSavedMoviesFound}
             isShortMovie={shortMovies}
             onGetMovies={handleSearchSavedMovies}
             loggedIn={loggedIn}
@@ -331,7 +352,6 @@ function App() {
             path="/profile"
             component={Profile}
             loggedIn={loggedIn}
-            buttonTitle={'Сохранить'}
             isLoading={isLoadingUpdateUser}
             onUpdateUser={handleUpdateUser}
             onSignOut={handleSignOut}
@@ -340,6 +360,7 @@ function App() {
 
           <Route path="/signup" >
             <Register
+              loggedIn={loggedIn}
               onRegister={handleRegister}
               authResStatus={authResStatus}
               regResStatus={registrationResStatus}

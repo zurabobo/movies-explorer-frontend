@@ -72,12 +72,13 @@ function Register({ onRegister, isLoadingRegister, regResStatus }) {
         <input className="auth-form__input"
           type="text" name="name" id="register-name"
           onChange={handleChange}
-          value={values.name || ''} minLength="2" maxLength="30" required />
+          value={values.name || ''} minLength="2" maxLength="30" pattern='^[a-zA-Zа-яёА-ЯЁ -]+$' required />
         <span id="name-input-error" className={errors.name ? "auth-form__input-error auth-form__input-error_visible" : "auth-form__input-error"}>{errors.name}</span>
 
         <label className="auth-form__input-label">E-mail</label>
         <input className="auth-form__input"
           type="email" name="email" value={values.email || ''} onChange={handleChange} id="register-email"
+          pattern='.{2,}@.{2,}\.[a-zA-Z]{2,6}'
           required />
         <span id="register-email-error" className={errors.email ? "auth-form__input-error auth-form__input-error_visible" : "auth-form__input-error"}>{errors.email}</span>
 
