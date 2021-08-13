@@ -254,31 +254,6 @@ function App() {
   }, [loggedIn]);
 
   useEffect(() => {
-    checkToken()
-    if (loggedIn) {
-      setIsLoading(true)
-      setIsLoadingMovies(true)
-      const token = localStorage.getItem('jwt');
-      mainApi.getAppData(token)
-        .then(([userData, savedMovies]) => {
-          localStorage.setItem("currentUser", JSON.stringify(userData));
-          setCurrentUser(userData);
-
-          const savedMoviesList = savedMovies.filter((item) => item.owner === userData._id).reverse();
-          localStorage.setItem("userMovies", JSON.stringify(savedMoviesList));
-          setUserMovies(savedMoviesList);
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-        .finally(() => {
-          setIsLoadingMovies(false)
-          setIsLoading(false)
-        });
-    }
-  }, [loggedIn]);
-
-  useEffect(() => {
     checkSavedMovie(sortedMovies);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userMovies]);
