@@ -8,33 +8,32 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './Movies.css';
 
 
-function Movies({ savedMovies, onGetMovies, likedMovies, isShortMovie, userMovies, onSubmit, onFilter, isLoading, isNoMoviesFound, movies, onSaveMovie, onDeleteSavedMovie }) {
+function Movies({ savedMovies, onChange, onGetMovies, likedMovies, isShortMovie, onSubmit, onFilter, isLoading, isNoMoviesFound, movies, onSaveMovie }) {
 
   let location = useLocation();
 
   return (
     <>
-      <SearchForm onGetMovies={onGetMovies} />
-      {!isLoading && isNoMoviesFound && (
-        <p className="movies-notification-message">по вашему запросу ничего не найдено</p>
-      )}
+      <SearchForm locationPathname={location.pathname} onGetMovies={onGetMovies} onSubmit={onSubmit} onChange={onChange} />
 
-      <FilterCheckbox onFilter={onFilter} isShortMovie={isShortMovie}/>
+      <FilterCheckbox onFilter={onFilter} isShortMovie={isShortMovie} />
 
       {isLoading && (
         <Preloader />
       )}
-      <MoviesCardList
-        onGetMovies={onGetMovies}
-        isSavedMovies={false}
-        likedMovies={likedMovies}
-        movies={movies}
-        onSubmit={onSubmit}
-        locationPathname={location.pathname}
-        savedMovies={savedMovies}
-        userMovies={userMovies}
-        onSaveMovie={onSaveMovie}
-        onDeleteSavedMovie={onDeleteSavedMovie} />
+      {!isLoading && isNoMoviesFound ? (
+        <p className="movies-notification-message">по вашему запросу ничего не найдено</p>
+      ) : (
+        <MoviesCardList
+          isSavedMovies={false}
+          likedMovies={likedMovies}
+          isNoMoviesFound={isNoMoviesFound}
+          movies={movies}
+          locationPathname={location.pathname}
+          savedMovies={savedMovies}
+          onSaveMovie={onSaveMovie}
+        />
+      )}
     </>
   )
 }

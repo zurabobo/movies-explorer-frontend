@@ -6,7 +6,7 @@ import { useFormValidation } from '../../hooks/useFormValidation';
 import Preloader from '../Preloader/Preloader';
 
 
-function Profile({ onSignOut, isLoading, onUpdateUser, userResStatus }) {
+function Profile({ onSignOut, profileUpdateMessage, isLoading, onUpdateUser, userResStatus }) {
   const currentUser = useContext(CurrentUserContext);
   const [isUpdateUserError, setIsUpdateUserError] = useState(false);
   const [updateUserErrorMessage, setUpdateUserErrorMessage] = useState('')
@@ -74,9 +74,9 @@ function Profile({ onSignOut, isLoading, onUpdateUser, userResStatus }) {
     }
   }, [currentUser, values])
 
-  // useEffect(() => {
-  //   errorHandler();
-  // });
+  useEffect(() => {
+    errorHandler();
+  });
 
   return (
     <section className="profile">
@@ -94,8 +94,9 @@ function Profile({ onSignOut, isLoading, onUpdateUser, userResStatus }) {
           </label>
           <span id="email-input-error" className={errors.email ? "profile-form__input-error profile-form__input-error_visible" : "profile-form__input-error"}>{errors.email}</span>
           {isUpdateUserError && (
-            <span className="profile-form__error-message">{updateUserErrorMessage}</span>
+            <span className="profile-form__error-message"></span>
           )}
+          <p className="profile-data__message">{profileUpdateMessage}</p>
         </fieldset>
           <>
             {isLoading && (
@@ -111,4 +112,3 @@ function Profile({ onSignOut, isLoading, onUpdateUser, userResStatus }) {
 
 
 export default Profile;
-

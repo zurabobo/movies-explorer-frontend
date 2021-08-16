@@ -4,22 +4,20 @@ import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import MoreButton from '../MoreButton/MoreButton';
 import useMediaScreenSize from '../../hooks/useMediaScreenSize';
+import {
+  SCREEN_WIDTH_L,
+  SCREEN_WIDTH_M,
+  SCREEN_WIDTH_S,
+  QUANTIITY,
+  QUANTITY_MOVIES_TO_ADD_L,
+  QUANTITY_MOVIES_TO_ADD_M,
+  QUANTITY_MOVIES_TO_RENDER_L,
+  QUANTITY_MOVIES_TO_RENDER_M,
+  QUANTITY_MOVIES_TO_RENDER_S,
+} from '../../utils/config';
 
 
-function MoviesCardList({ savedMovies, likedMovies, onSaveMovie, isSavedMovies, userMovies, onDeleteSavedMovie, locationPathname, movies }) {
-
-  const SCREEN_WIDTH_L = 1280;
-  const SCREEN_WIDTH_M = 768;
-  const SCREEN_WIDTH_S = 320;
-
-  const QUANTITY_MOVIES_TO_RENDER_L = 12;
-  const QUANTITY_MOVIES_TO_RENDER_M = 8;
-  const QUANTITY_MOVIES_TO_RENDER_S = 5;
-
-  const QUANTITY_MOVIES_TO_ADD_L = 3;
-  const QUANTITY_MOVIES_TO_ADD_M = 2;
-
-  const QUANTIITY = 0;
+function MoviesCardList({ isLoading, foundUserMovies, isSavedMoviesSearch, savedMovies, isNoMoviesFound, likedMovies, onSaveMovie, isSavedMovies, onDeleteSavedMovie, locationPathname, movies }) {
 
   const [moviesToRender, setMoviesToRender] = useState([]);
   const [isMoreButtonActive, setIsMoreButtonActive] = useState(false);
@@ -50,7 +48,7 @@ function MoviesCardList({ savedMovies, likedMovies, onSaveMovie, isSavedMovies, 
 
   useEffect(() => {
     countQuantityMoviesToRender();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [screenSize.width])
 
   useEffect(() => {
@@ -65,13 +63,13 @@ function MoviesCardList({ savedMovies, likedMovies, onSaveMovie, isSavedMovies, 
       setMoviesToRender(movies);
       setIsMoreButtonActive(false);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movies, quantityMoviesToRender])
 
 
 
-  const initialMoviesCards = moviesToRender.map((movie, id) => (
-    <li key={id}>
+  const initialMoviesCards = moviesToRender.map((movie) => (
+    <li key={movie.id || movie._id}>
       <MoviesCard
         buttonTitle="Сохранить"
         movie={movie}
@@ -87,12 +85,43 @@ function MoviesCardList({ savedMovies, likedMovies, onSaveMovie, isSavedMovies, 
 
   return (
     <>
-    <ul className="movies-card__list">{initialMoviesCards}</ul>
-    {locationPathname === '/movies' && isMoreButtonActive ? (
-      <MoreButton
-        onClick={handleMoreButtonClick}
-      />
-    ) : null}
+      <section className="movies-card-list__section">
+        {isSavedMovies ? (
+          <>
+            {isSavedMoviesSearch ? (
+              <>
+                <ul className="movies-card__list">
+                  {foundUserMovies.map((movie) => (
+                    <li key={movie.id || movie._id}>
+                      <MoviesCard
+                        buttonTitle="Сохранить"
+                        movie={movie}
+                        onSaveMovie={onSaveMovie}
+                        likedMovies={likedMovies}
+                        isSavedMovies={isSavedMovies}
+                        savedMovies={savedMovies}
+                        locationPathname={locationPathname}
+                        onDeleteSavedMovie={onDeleteSavedMovie}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <>
+                <ul className="movies-card__list">{initialMoviesCards}</ul>
+              </>
+            )}
+          </>
+        ) : (
+          <>
+            <ul className="movies-card__list">{initialMoviesCards}</ul>
+            {isMoreButtonActive ? (
+              <MoreButton onClick={handleMoreButtonClick} />
+            ) : null}
+          </>
+        )}
+      </section>
     </>
   )
 }

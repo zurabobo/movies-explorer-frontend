@@ -1,32 +1,52 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useLocation } from 'react-router-dom';
 import SearchForm from '../SearchForm/SearchForm';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import Preloader from '../Preloader/Preloader';
 import '../Movies/Movies.css';
 
-function SavedMovies({ isLoading, isNoSavedMoviesFound, onGetMovies, userMovies, isSavedMovies, movies, onSubmit, onDeleteSavedMovie, onFilter, isShortMovie }) {
+function SavedMovies({ onChange, isSavedMoviesSearch, showSearchedMovies, handleSearchSavedMovies, foundUserMovies, isLoading, isNoMoviesFound, isNoSavedMoviesFound, isSavedMovies, movies, onDeleteSavedMovie, onFilter, isShortMovie }) {
 
   let location = useLocation();
 
+  const handleSubmit = (data) => {
+    handleSearchSavedMovies(data)
+  }
+
+  useEffect(() => {
+    handleSearchSavedMovies()
+  }, [])
+
   return (
     <>
-      <SearchForm onGetMovies={onGetMovies} />
-      {!isLoading && isNoSavedMoviesFound && (
-        <p className="movies-notification-message">по вашему запросу ничего не найдено</p>
-      )}
+      <SearchForm showSearchedMovies={showSearchedMovies}
+        handleSearchSavedMovies={handleSearchSavedMovies}
+        onSubmit={handleSubmit}
+        onChange={onChange}
+      />
       <FilterCheckbox onFilter={onFilter} isShortMovie={isShortMovie} />
-      <MoviesCardList
-        onGetMovies={onGetMovies}
-        userMovies={userMovies}
-        movies={movies}
-        isSavedMovies={isSavedMovies}
-        onSubmit={onSubmit}
-        locationPathname={location.pathname}
-        onDeleteSavedMovie={onDeleteSavedMovie} />
+      {isLoading && (
+        <Preloader />
+      )}
+      {!isLoading && isNoSavedMoviesFound ? (
+        <p className="movies-notification-message">ничего не найдено</p>
+      ) : (
+        <MoviesCardList
+          isNoMoviesFound={isNoMoviesFound}
+          movies={movies}
+          isSavedMovies={isSavedMovies}
+          isSavedMoviesSearch={isSavedMoviesSearch}
+          foundUserMovies={foundUserMovies}
+          locationPathname={location.pathname}
+          onDeleteSavedMovie={onDeleteSavedMovie} />
+      )}
     </>
   )
 }
 
 export default SavedMovies;
+
+
+

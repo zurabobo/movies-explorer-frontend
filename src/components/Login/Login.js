@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './Login.css';
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import AuthForm from "../AuthForm/AuthForm";
 import { useFormValidation } from '../../hooks/useFormValidation';
 
 
-function Login({ onLogin, isLoadingLogin, authResStatus, tokenResStatus }) {
+function Login({ onLogin, loggedIn, isLoadingLogin, authResStatus, tokenResStatus }) {
 
+  const history = useHistory();
   const [isAuthErr, setIsAuthErr] = useState(false);
   const [authErrMessage, setAuthErrMessage] = useState('');
 
@@ -75,7 +76,13 @@ function Login({ onLogin, isLoadingLogin, authResStatus, tokenResStatus }) {
     };
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
+    if (loggedIn) {
+      history.push("/");
+    }
+  }, [history, loggedIn]);
+
+  useEffect(() => {
     errorHandler();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -31,6 +31,7 @@ function App() {
   const [isNoMoviesFound, setIsNoMoviesFound] = useState(false);
   const [isNoSavedMoviesFound, setIsNoSavedMoviesFound] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [profileUpdateMessage, setProfileUpdateMessage] = useState('');
   const [userMovies, setUserMovies] = useState([]);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [sortedMovies, setSortedMovies] = useState([])
@@ -40,6 +41,8 @@ function App() {
   const [updateUserResStatus, setUpdateUserResStatus] = useState(null);
   const [movies, setMovies] = useState([])
   const [shortMovies, setShortMovies] = useState(false);
+  const [isSavedMoviesSearch, setIsSavedMoviesSearch] = useState(false);
+  const [findedUserMovies, setFindedUserMovies] = useState([]);
 
   const history = useHistory();
 
@@ -114,6 +117,7 @@ function App() {
       mainApi.updateUserProfile(data, token)
         .then((res) => {
           setCurrentUser(res);
+          setProfileUpdateMessage('Данные успешно обновлены')
           setUpdateUserResStatus(res.status);
           localStorage.setItem('currentUser', JSON.stringify(res));
         })
@@ -193,6 +197,7 @@ function App() {
   }
 
   const handleSearchSavedMovies = (keyword) => {
+    setIsNoSavedMoviesFound(false);
     const key = new RegExp(keyword, "gi");
     const findedMovies = userMovies.filter((m) => key.test(m.nameRU) || key.test(m.nameEN));
     if (findedMovies.length === 0) {
@@ -200,7 +205,7 @@ function App() {
     } else {
       setIsNoSavedMoviesFound(false);
     }
-    setUserMovies(findedMovies);
+    setFindedUserMovies(findedMovies);
   }
 
   const handleCheckBox = () => {
@@ -228,10 +233,10 @@ function App() {
       const token = localStorage.getItem('jwt');
       Promise.all([
         mainApi.getUserInfo(token),
-        mainApi.getSavedMovies(token),
         moviesApi.getMovies(),
+        mainApi.getSavedMovies(token),
       ])
-        .then(([userData, savedMovies, allMovies]) => {
+        .then(([userData, allMovies, savedMovies]) => {
           localStorage.setItem("currentUser", JSON.stringify(userData));
           setCurrentUser(userData);
 
@@ -241,7 +246,6 @@ function App() {
 
           localStorage.setItem("movies", JSON.stringify(allMovies));
           setMovies(allMovies);
-
         })
         .catch((err) => {
           console.log(err);
@@ -257,6 +261,10 @@ function App() {
     checkSavedMovie(sortedMovies);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userMovies]);
+
+  function showSearchedMovies() {
+    setIsSavedMoviesSearch(true);
+  }
 
   const handleOpenMenu = () => {
     setMenuIsOpen(true);
@@ -307,6 +315,7 @@ function App() {
             isNoMoviesFound={isNoMoviesFound}
             onFilter={handleCheckBox}
             buttonTitle="Сохранить"
+            userMovies={userMovies}
           />
 
           <ProtectedRoute
@@ -316,11 +325,14 @@ function App() {
             movies={filterShortMovies(userMovies)}
             isNoSavedMoviesFound={isNoSavedMoviesFound}
             isShortMovie={shortMovies}
-            onGetMovies={handleSearchSavedMovies}
+            handleSearchSavedMovies={handleSearchSavedMovies}
+            showSearchedMovies={showSearchedMovies}
             loggedIn={loggedIn}
             onDeleteSavedMovie={handleDeleteMovieBtn}
             onFilter={handleCheckBox}
             isSavedMovies={true}
+            isSavedMoviesSearch={isSavedMoviesSearch}
+            foundUserMovies={findedUserMovies}
           />
 
           <ProtectedRoute
@@ -329,6 +341,7 @@ function App() {
             loggedIn={loggedIn}
             isLoading={isLoadingUpdateUser}
             onUpdateUser={handleUpdateUser}
+            profileUpdateMessage={profileUpdateMessage}
             onSignOut={handleSignOut}
             userResStatus={updateUserResStatus}
           />

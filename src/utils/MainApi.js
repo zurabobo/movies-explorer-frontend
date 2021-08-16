@@ -48,7 +48,6 @@ class MainApi {
       .then(this._getResData);
   }
 
-
   updateUserProfile(data, token) {
     return fetch(`${this._MAIN_API_URL}/users/me`, {
       method: 'PATCH',
@@ -105,16 +104,13 @@ class MainApi {
     }).then(this._getResData)
   }
 
-  getAppData(token) {
-    return Promise.all([this.getUserInfo(token), this.getSavedMovies(token)]);
-}
-
   _getResData(res) {
     if (res.ok) {
       return res.json();
     }
     return Promise.reject(`Ошибка: ${res.status}`);
   }
+
 }
 
 const mainApi = new MainApi({

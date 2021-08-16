@@ -1,13 +1,14 @@
 import React, { useState, useEffect} from "react";
 import "../Register/Register.css"
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import AuthForm from "../AuthForm/AuthForm";
 import { useFormValidation } from '../../hooks/useFormValidation';
 
 
-function Register({ onRegister, isLoadingRegister, regResStatus }) {
+function Register({ onRegister, loggedIn, isLoadingRegister, regResStatus }) {
 
+  const history = useHistory();
   const [isRegistrationErr, setIsRegistrationErr] = useState(false);
   const [registrationErrMessage, setRegistrationErrMessage] = useState('');
 
@@ -47,6 +48,12 @@ function Register({ onRegister, isLoadingRegister, regResStatus }) {
       };
     };
   };
+
+  useEffect(() => {
+    if (loggedIn) {
+      history.push("/");
+    }
+  }, [history, loggedIn]);
 
   useEffect(() => {
     errorHandler();
