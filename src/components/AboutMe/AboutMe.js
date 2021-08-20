@@ -14,10 +14,9 @@ function AboutMe() {
           <div className="about-me__text-container">
             <h3 className="about-me__info-title">Зураб</h3>
             <h4 className="about-me__subtitle">Мастер, 35 лет</h4>
-            <p className="about-me__text">Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена
-и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить.
-С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке,
-начал заниматься фриланс-заказами и ушёл с постоянной работы.</p>
+            <p className="about-me__text">Я родился в Тбилиси  и уже семь лет живу в Ростове-на-Дону.
+Закончил факультет Информатики и Управления системами.
+Женат, есть сын. Работаю последние несколько лет не по профессии, но так как меня всегда увлекало программирование, то решился пройти курс "Веб-разработчика" в "Яндекс.Практикуме".</p>
             <ul className="about-me__list">
               <li className="about-me__list-item">
                 <a className="about-me__list-link" href="https://www.facebook.com/zura.bobokhidze.3" target="_blank" rel="noreferrer">Facebook</a>

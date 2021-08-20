@@ -6,9 +6,11 @@ export function useFormValidation() {
   const [errors, setErrors] = useState({});
   const [isValid, setIsValid] = useState(false);
 
-  function handleChange(evt) {
-    const name = evt.target.name;
-    const value = evt.target.value;
+
+  const handleChange = (evt) => {
+    const target = evt.target;
+    const name = target.name;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
 
     setValues({
       ...values,
@@ -17,10 +19,11 @@ export function useFormValidation() {
 
     setErrors({
       ...errors,
-      [name]: evt.target.validationMessage
+      [name]: target.validationMessage
     });
 
-    setIsValid(evt.target.closest('.popup__form').checkValidity());
+
+    setIsValid(evt.target.closest('form').checkValidity());
 
   }
 
@@ -38,7 +41,7 @@ export function useFormValidation() {
     errors,
     isValid,
     handleChange,
-    resetForm
+    resetForm,
   };
 
 };

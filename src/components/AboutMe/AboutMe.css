@@ -7,8 +7,8 @@
 
 .about-me__image {
   display: block;
-  height: 327px;
-  width: 270px;
+  max-width: 270px;
+  width: 100%;
   object-fit: cover;
 }
 
@@ -130,14 +130,10 @@
     line-height: 1.5;
   }
 
-  .about-me__text-container {
-    max-width: 364px;
-  }
-
-  .about-me__image {
+  /* .about-me__image {
     height: 307px;
     width: 255px;
-  }
+  } */
 
   .about-me__info-title {
     font-size: 40px;
@@ -191,8 +187,8 @@
   }
 
   .about-me__image {
-    height: 352px;
-    width: 292px;
+    max-width: 550px;
+    margin: 0 auto;
   }
 
   .about-me__list {
