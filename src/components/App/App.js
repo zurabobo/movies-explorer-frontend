@@ -17,6 +17,7 @@ import Login from '../Login/Login';
 import NoPageFound from '../NoPageFound/NoPageFound';
 import mainApi from '../../utils/MainApi';
 import moviesApi from '../../utils/MoviesApi';
+import { SHORT_MOVIE_DURATION } from '../../utils/config';
 
 function App() {
 
@@ -215,7 +216,7 @@ function App() {
   const filterShortMovies = (arr) => {
     if (arr.length !== 0 || arr !== "undefind") {
       return arr.filter((movie) =>
-        shortMovies ? movie.duration <= 40 : true
+        shortMovies ? movie.duration <= SHORT_MOVIE_DURATION : true
       );
     }
   }

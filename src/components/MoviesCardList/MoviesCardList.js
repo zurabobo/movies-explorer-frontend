@@ -17,7 +17,7 @@ import {
 } from '../../utils/config';
 
 
-function MoviesCardList({ isLoading, foundUserMovies, isSavedMoviesSearch, savedMovies, isNoMoviesFound, likedMovies, onSaveMovie, isSavedMovies, onDeleteSavedMovie, locationPathname, movies }) {
+function MoviesCardList({ foundUserMovies, isSavedMoviesSearch, savedMovies, likedMovies, onSaveMovie, isSavedMovies, onDeleteSavedMovie, locationPathname, movies }) {
 
   const [moviesToRender, setMoviesToRender] = useState([]);
   const [isMoreButtonActive, setIsMoreButtonActive] = useState(false);

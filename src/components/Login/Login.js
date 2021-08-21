@@ -85,12 +85,15 @@ function Login({ onLogin, loggedIn, isLoadingLogin, authResStatus, tokenResStatu
   useEffect(() => {
     errorHandler();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authResStatus, tokenResStatus]);
 
   return (
     <main className="login">
       <AuthForm
+        onChange={handleChange}
+        values={values}
+        errors={errors}
         isAuthErr={isAuthErr}
         isLoading={isLoadingLogin}
         authErrMessage={authErrMessage}
@@ -102,18 +105,6 @@ function Login({ onLogin, loggedIn, isLoadingLogin, authResStatus, tokenResStatu
         }
         buttonTitle="Войти"
       >
-
-        <label className="auth-form__input-label">E-mail</label>
-        <input className="auth-form__input"
-          type="email" name="email" value={values.email || ''} onChange={handleChange} id="login-email"
-          minLength="2" maxLength="30" pattern='.{2,}@.{2,}\.[a-zA-Z]{2,6}' required />
-        <span id="login-email-error" className={errors.email ? "auth-form__input-error auth-form__input-error_visible" : "auth-form__input-error"}>{errors.email}</span>
-
-        <label className="auth-form__input-label">Пароль</label>
-        <input className="auth-form__input"
-          type="password" name="password" onChange={handleChange} id="login-password"
-          value={values.password || ''} minLength="8" maxLength="30" required />
-        <span id="login-password-error" className={errors.email ? "auth-form__input-error auth-form__input-error_visible" : "auth-form__input-error"}>{errors.password}</span>
       </AuthForm>
     </main>
   );

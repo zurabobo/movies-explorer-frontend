@@ -1,11 +1,4 @@
 .auth-form__section {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  width: 100%;
-  height: 100vh; */
   width: 100%;
   padding: 70px 0;
 }
@@ -51,6 +44,7 @@
   height: 34px;
   border: none;
   border-bottom: solid 1px #E8E8E8;
+  width: 100%;
 }
 
 .auth-form__input:invalid {
@@ -115,6 +109,38 @@
   pointer-events: none;
 }
 
+.auth-form__password-icon {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  background-size: cover;
+  position: absolute;
+  bottom: 8px;
+  right: 4px;
+  cursor: pointer;
+  transition: opacity .3s ease;
+}
+
+.auth-form__password-icon:hover {
+  opacity: .8;
+}
+
+.auth-form__password-icon_text {
+  background-image: url('../../images/eye-opened.svg');
+}
+
+.auth-form__password-icon_password {
+  background-image: url('../../images/eye-closed.svg');
+}
+
+.auth-form__password-input-container{
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
 .auth-form__link {
   text-decoration: none;
   font-family: Inter;
@@ -147,10 +173,10 @@
 
 .preloader-container {
   display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
 }
 
 @media screen and (max-width: 1023px) {

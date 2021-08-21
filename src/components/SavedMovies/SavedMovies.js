@@ -7,23 +7,30 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 import '../Movies/Movies.css';
 
-function SavedMovies({ onChange, isSavedMoviesSearch, showSearchedMovies, handleSearchSavedMovies, foundUserMovies, isLoading, isNoMoviesFound, isNoSavedMoviesFound, isSavedMovies, movies, onDeleteSavedMovie, onFilter, isShortMovie }) {
+function SavedMovies({ onChange, userMovies, isSavedMoviesSearch, showSearchedMovies, handleSearchSavedMovies, foundUserMovies, isLoading, isNoMoviesFound, isNoSavedMoviesFound, isSavedMovies, movies, onDeleteSavedMovie, onFilter, isShortMovie }) {
 
   let location = useLocation();
-
-  const handleSubmit = (data) => {
-    handleSearchSavedMovies(data)
-  }
+  
 
   useEffect(() => {
-    handleSearchSavedMovies()
-  }, [])
+    if (!userMovies) {
+      handleSearchSavedMovies()
+    }
+  }, [userMovies]);
+
+  // const handleSubmit = (data) => {
+  //   handleSearchSavedMovies(data)
+  // }
+
+  // useEffect(() => {
+  //   handleSearchSavedMovies()
+  // }, [])
 
   return (
     <>
       <SearchForm showSearchedMovies={showSearchedMovies}
         handleSearchSavedMovies={handleSearchSavedMovies}
-        onSubmit={handleSubmit}
+        //onSubmit={handleSubmit}
         onChange={onChange}
       />
       <FilterCheckbox onFilter={onFilter} isShortMovie={isShortMovie} />
