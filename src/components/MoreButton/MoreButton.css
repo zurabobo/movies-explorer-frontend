@@ -19,7 +19,7 @@
   color: #000;
   background-color: #F9F9F9;
   border-radius: 6px;
-  border: none;
+  border: solid 1px #EBEBEB;
   cursor: pointer;
   transition: opacity .3s ease;
 }

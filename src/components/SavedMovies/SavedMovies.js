@@ -10,7 +10,7 @@ import '../Movies/Movies.css';
 function SavedMovies({ onChange, userMovies, isSavedMoviesSearch, showSearchedMovies, handleSearchSavedMovies, foundUserMovies, isLoading, isNoMoviesFound, isNoSavedMoviesFound, isSavedMovies, movies, onDeleteSavedMovie, onFilter, isShortMovie }) {
 
   let location = useLocation();
-  
+
 
   useEffect(() => {
     if (!userMovies) {

@@ -57,8 +57,8 @@ function SearchForm({ onGetMovies, locationPathname, handleSearchSavedMovies, sh
           <form className="search-form" onSubmit={handleSubmit}>
             <div className="search-form__container">
               <div className="search-form__input-container">
-                <input className="search-form__input" type="text" id="search-text" name="search" value={findedMovie} onChange={handleSearchMovie} required />
-                <button className={!isValid ? "search-form__submit-btn search-form__submit-btn_disabled" : "search-form__submit-btn"} disabled={!isValid} type="submit">Найти</button>
+                <input className="search-form__input" placeholder="Фильм" type="text" id="search-text" name="search" value={findedMovie} onChange={handleSearchMovie} required />
+                <button className="search-form__submit-btn" type="submit">Найти</button>
               </div>
             </div>
           </form>
@@ -70,8 +70,8 @@ function SearchForm({ onGetMovies, locationPathname, handleSearchSavedMovies, sh
               <form className="search-form" onSubmit={handleSavedMoviesSubmit}>
                 <div className="search-form__container">
                   <div className="search-form__input-container">
-                    <input className="search-form__input" type="text" id="search-text" name="search" value={findedSavedMovie} onChange={handleSearchSavedMovieChange} required />
-                    <button className={!isValid ? "search-form__submit-btn search-form__submit-btn_disabled" : "search-form__submit-btn"} disabled={!isValid} type="submit">Найти</button>
+                    <input className="search-form__input" placeholder="Фильм" type="text" id="search-text" name="search" value={findedSavedMovie} onChange={handleSearchSavedMovieChange} required />
+                    <button className="search-form__submit-btn" type="submit">Найти</button>
                   </div>
                 </div>
               </form>

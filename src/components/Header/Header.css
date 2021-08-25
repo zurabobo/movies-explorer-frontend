@@ -12,6 +12,10 @@
   display: block;
 }
 
+/* .header__logo:hover{
+  width: 45px;
+} */
+
 .header__grid-template {
   display: grid;
   grid-template-columns: 38px 1fr 100px;

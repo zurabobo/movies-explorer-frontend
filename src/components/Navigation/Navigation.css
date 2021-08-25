@@ -28,6 +28,7 @@
 
 .navigation__link_active {
   font-weight: 500;
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 1023px) {

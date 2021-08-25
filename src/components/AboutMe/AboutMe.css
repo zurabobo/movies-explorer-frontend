@@ -120,6 +120,10 @@
   transition: opacity .3s ease;
 }
 
+.about-me__portfolio-list-link:hover {
+  opacity: .7;
+}
+
 @media screen and (max-width: 1023px) {
   .about-me {
     padding: 90px 50px 70px;
