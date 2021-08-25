@@ -110,14 +110,14 @@
 }
 
 .auth-form__password-icon {
-  width: 15px;
-  height: 15px;
+  width: 18px;
+  height: 18px;
   background-color: transparent;
   border: none;
   outline: none;
   background-size: cover;
   position: absolute;
-  bottom: 22px;
+  bottom: 10px;
   right: 4px;
   cursor: pointer;
   -webkit-transition: opacity .3s ease;
