@@ -18,7 +18,6 @@
   border: none;
   padding: 0;
   margin: 0;
-  position: relative;
 }
 
 .auth-form__input-label {
@@ -142,7 +141,7 @@
 .auth-form__password-input-container{
   display: flex;
   align-items: center;
-  /* position: relative; */
+  position: relative;
 }
 
 .auth-form__link {
