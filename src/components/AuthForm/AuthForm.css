@@ -204,8 +204,8 @@
   }
 
   .auth-form__password-icon{
-    position: absolute!important;
-    /* bottom: 130px;
-    right: 34px; */
+    position: fixed;
+    bottom: 130px;
+    right: 34px;
   }
 }
