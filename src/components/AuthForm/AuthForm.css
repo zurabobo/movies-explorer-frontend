@@ -201,4 +201,8 @@
     font-size: 12px;
     line-height: 15px;
   }
+
+  .auth-form__password-icon {
+    position: fixed!important;
+  }
 }
