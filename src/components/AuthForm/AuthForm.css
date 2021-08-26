@@ -117,7 +117,7 @@
   border: none;
   outline: none;
   background-size: cover;
-  /* position: absolute; */
+  position: absolute;
   bottom: 4px;
   right: 4px;
   cursor: pointer;
@@ -201,5 +201,11 @@
   .auth-form__link {
     font-size: 12px;
     line-height: 15px;
+  }
+
+  .auth-form__password-icon{
+    position: absolute!important;
+    /* bottom: 130px;
+    right: 34px; */
   }
 }
