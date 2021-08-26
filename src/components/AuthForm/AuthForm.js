@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { Link } from "react-router-dom";
 import "./AuthForm.css";
+import "../Header/Header.css"
 import Logo from '../../images/header-logo.svg';
 import FormTitle from '../FormTitle/FormTitle';
 import Preloader from '../Preloader/Preloader';
@@ -26,7 +27,7 @@ function AuthForm({ onChange, values, errors, isValid, isLoading, isAuthErr, aut
     <section className="auth-form__section">
       <form className="auth-form" onSubmit={onSubmit} noValidate>
         <Link to="/">
-          <img alt="логотип movies-explorer" className="logo" src={Logo} />
+          <img alt="логотип movies-explorer" className="header__logo" src={Logo} />
         </Link>
         <FormTitle titleText={titleText} />
 

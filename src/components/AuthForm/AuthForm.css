@@ -140,10 +140,7 @@
 }
 
 .auth-form__password-input-container{
-  display: flex;
-  align-items: center;
   position: relative;
-  box-sizing: border-box;
 }
 
 .auth-form__link {
