@@ -205,7 +205,6 @@
 
   .auth-form__password-icon{
     position: fixed;
-    bottom: 130px;
-    right: 34px;
+  
   }
 }
