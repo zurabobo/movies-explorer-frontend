@@ -35,6 +35,7 @@
 }
 
 .auth-form__input {
+  box-sizing: border-box;
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -200,11 +201,5 @@
   .auth-form__link {
     font-size: 12px;
     line-height: 15px;
-  }
-
-  .auth-form__password-icon {
-    position: fixed!important;
-    bottom: 175px;
-    right: 30px;
   }
 }
