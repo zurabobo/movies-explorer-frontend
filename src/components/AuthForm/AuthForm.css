@@ -28,6 +28,7 @@
   line-height: 1.1;
   color: #A0A0A0;
   margin-top: 24px;
+  padding-bottom: 4px;
 }
 
 .auth-form__input-label:first-child {
