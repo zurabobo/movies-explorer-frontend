@@ -118,6 +118,8 @@
   outline: none;
   background-size: cover;
   position: absolute;
+  overflow: hidden;
+  z-index: 300;
   bottom: 8px;
   right: 4px;
   cursor: pointer;
