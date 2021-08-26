@@ -10,11 +10,12 @@
 
 .header__logo {
   display: block;
+  transition: transform ease 1s;
 }
 
-/* .header__logo:hover{
-  width: 45px;
-} */
+.header__logo:hover{
+  transform: rotate(360deg);
+}
 
 .header__grid-template {
   display: grid;
