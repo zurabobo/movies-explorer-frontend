@@ -203,6 +203,6 @@
   }
 
   .auth-form__password-icon {
-    position: fixed!important;
+    position: absolute!important;
   }
 }
