@@ -121,9 +121,7 @@
   bottom: 8px;
   right: 4px;
   cursor: pointer;
-  width: -webkit-min-content;
-  width: -moz-min-content;
-  width: min-content;
+  overflow: hidden;
   -webkit-transition: opacity .3s ease;
   -o-transition: opacity .3s ease;
   transition: opacity .3s ease;
@@ -145,6 +143,7 @@
   display: flex;
   align-items: center;
   position: relative;
+  box-sizing: border-box;
 }
 
 .auth-form__link {
