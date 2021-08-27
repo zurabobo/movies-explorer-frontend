@@ -123,10 +123,11 @@
   right: 4px;
   cursor: pointer;
   overflow: hidden;
-  padding-top: env(safe-area-inset-top);
+  padding: 0;
+  /* padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
   padding-left: env(safe-area-inset-left);
-  padding-right: env(safe-area-inset-right);
+  padding-right: env(safe-area-inset-right); */
   -webkit-transition: opacity .3s ease;
   -o-transition: opacity .3s ease;
   transition: opacity .3s ease;
