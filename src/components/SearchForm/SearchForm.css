@@ -24,6 +24,7 @@
   border: solid 1px #EBEBEB;
   text-align: left;
   padding: 0 0 0 22px;
+  outline: none;
 }
 
 .search-form__input:focus {
