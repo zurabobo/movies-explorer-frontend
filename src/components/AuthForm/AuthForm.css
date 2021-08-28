@@ -47,6 +47,7 @@
   border: none;
   border-bottom: solid 1px #E8E8E8;
   width: 100%;
+  padding: 0;
 }
 
 .auth-form__input:invalid {
