@@ -127,3 +127,4 @@ function MoviesCardList({ foundUserMovies, isSavedMoviesSearch, savedMovies, lik
 }
 
 export default MoviesCardList;
+

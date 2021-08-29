@@ -7,9 +7,11 @@ import ProfileEditButton from '../ProfileEditButton/ProfileEditButton';
 
 import Modal from 'react-modal';
 Modal.setAppElement('#root');
+console.log(React.version);
 
 
-function MenuPopup({ isOpen, onClose, onClick }) {
+function MenuPopup({ isOpen, onClose }) {
+
   return (
     <Modal
     isOpen={isOpen}
