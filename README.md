@@ -1,3 +1,6 @@
+## [Проектная работа на GitHub Pages](https://zurabobo.github.io/spacex-test).
+
+
 # movies-explorer-frontend
 
 `Movie Explorer` сервис для поиска фильмов

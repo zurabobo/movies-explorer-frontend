@@ -11,7 +11,7 @@
   right: 0;
   background: rgba(0, 0, 0, .3);
   z-index: 11;
-  transition: visibility .3s, opacity .3s liner;
+  transition: visibility .3s ease-in-out, opacity .3s ease-in-out;
 }
 
 @media screen and (max-width: 1023px){

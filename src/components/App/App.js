@@ -222,8 +222,7 @@ function App() {
   }
 
   const checkSavedMovie = (movie) => {
-    return (movie.isSaved = userMovies.some((userMovie) => userMovie.movieId === movie.id
-    ));
+    return (movie.isSaved = userMovies.some((userMovie) => userMovie.movieId === movie.id))
   }
 
   useEffect(() => {
@@ -258,10 +257,10 @@ function App() {
     }
   }, [loggedIn]);
 
-  useEffect(() => {
-    checkSavedMovie(sortedMovies);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userMovies]);
+  // useEffect(() => {
+  //   checkSavedMovie(sortedMovies);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [userMovies]);
 
   function showSearchedMovies() {
     setIsSavedMoviesSearch(true);
@@ -384,4 +383,3 @@ function App() {
 }
 
 export default App;
-
