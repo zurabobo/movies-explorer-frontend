@@ -1,4 +1,4 @@
-## [Проектная работа на GitHub Pages](https://zurabobo.github.io/spacex-test).
+## [Проектная работа на GitHub Pages](https://zurabobo.github.io/movies-explorer-frontend).
 
 
 # movies-explorer-frontend
