@@ -1,6 +1,3 @@
-## [Проектная работа на GitHub Pages](https://zurabobo.github.io/movies-explorer-frontend).
-
-
 # movies-explorer-frontend
 
 `Movie Explorer` сервис для поиска фильмов
