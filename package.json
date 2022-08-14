@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^12.8.3",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.23.2",
+    "file-system": "^2.2.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-modal": "^3.14.3",
@@ -17,7 +18,7 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "deploy": "npm run build && node ../../src/utils/copyToPublic.js",
+    "prod": "npm run build && node ../../src/utils/copyToPublic.js",
     "predeploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build"
