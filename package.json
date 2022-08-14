@@ -18,10 +18,9 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "prod": "npm run build && node ../../src/utils/copyToPublic.js",
+    "build": "npm run build && node ../../src/utils/copyToPublic.js",
     "predeploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build"
+    "start": "react-scripts start"
   },
   "eslintConfig": {
     "extends": [
