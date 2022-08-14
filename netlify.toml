@@ -1,0 +1,7 @@
+[[redirects]]
+  from = "https://movies-explorer-frontend.netlify.app/signup"
+  to = "https://moviesexplorer-api.herokuapp.com/signup"
+  status = 200
+  force = true # COMMENT: ensure that we always redirect
+  headers = {X-From = "Netlify"}
+  signed = "API_SIGNATURE_TOKEN"
