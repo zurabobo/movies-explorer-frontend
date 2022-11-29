@@ -34,15 +34,15 @@ function AboutMe() {
           <h5 className="about-me__portfolio-title">Портфолио</h5>
           <ul className="about-me__portfolio-list">
             <li className="about-me__portfolio-list-item">
-              <a className="about-me__portfolio-list-link" href="https://github.com/zurabobo/how-to-learn" target="_blank" rel="noreferrer">Статичный сайт
+              <a className="about-me__portfolio-list-link" href="https://react-mestoapi.netlify.app/sign-in" target="_blank" rel="noreferrer">Первое приложение React
                 <span className="about-me__portfolio-list-link-icon">↗</span>
               </a>
             </li>
             <li className="about-me__portfolio-list-item">
-              <a className="about-me__portfolio-list-link" href="https://zurabobo.github.io/russian-travel" target="_blank" rel="noreferrer">Адаптивный сайт
+              <a className="about-me__portfolio-list-link" href="https://welbex-testtask.netlify.app/" target="_blank" rel="noreferrer">Тестовые проекты
                 <span className="about-me__portfolio-list-link-icon">↗</span>
               </a></li><li className="about-me__portfolio-list-item">
-              <a className="about-me__portfolio-list-link" href="https://movies-explorer-frontend.netlify.app/" target="_blank" rel="noreferrer">Одностраничное приложение
+              <a className="about-me__portfolio-list-link" href="https://movies-explorer-frontend.netlify.app/" target="_blank" rel="noreferrer">Дипломная работа
                 <span className="about-me__portfolio-list-link-icon">↗</span>
               </a>
             </li>
