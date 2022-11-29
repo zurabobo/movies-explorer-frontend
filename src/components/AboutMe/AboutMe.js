@@ -42,7 +42,7 @@ function AboutMe() {
               <a className="about-me__portfolio-list-link" href="https://zurabobo.github.io/russian-travel" target="_blank" rel="noreferrer">Адаптивный сайт
                 <span className="about-me__portfolio-list-link-icon">↗</span>
               </a></li><li className="about-me__portfolio-list-item">
-              <a className="about-me__portfolio-list-link" href="https://zb.students.nomoredomains.club" target="_blank" rel="noreferrer">Одностраничное приложение
+              <a className="about-me__portfolio-list-link" href="https://movies-explorer-frontend.netlify.app/" target="_blank" rel="noreferrer">Одностраничное приложение
                 <span className="about-me__portfolio-list-link-icon">↗</span>
               </a>
             </li>
