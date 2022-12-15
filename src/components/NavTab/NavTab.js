@@ -1,23 +1,21 @@
-import React from 'react';
-
-import './NavTab.css'
+import React from "react";
+import "./NavTab.css";
+import { environment } from "../../utils/config";
 
 function NavTab() {
   return (
     <nav className="nav-tab">
       <ul className="nav-tab__list">
-        <li className="nav-tab__list-item">
-          <a className="nav-tab__list-link" href="#about-project">О проекте</a>
-        </li>
-        <li className="nav-tab__list-item">
-          <a className="nav-tab__list-link" href="#technologies">Технологии</a>
-        </li>
-        <li className="nav-tab__list-item">
-          <a className="nav-tab__list-link" href="#about-me">Студент</a>
-        </li>
+        {environment.navTabProperties.map((property) => (
+          <li key={property.label} className="nav-tab__list-item">
+            <a className="nav-tab__list-link" href={property.anchor}>
+              {property.label}
+            </a>
+          </li>
+        ))}
       </ul>
     </nav>
-  )
+  );
 }
 
 export default NavTab;

@@ -43,6 +43,10 @@
   transition: opacity .3s ease;
 }
 
+.footer__list-link:hover {
+  text-decoration: underline;
+}
+
 .footer__list-item {
   margin: 0 24px 0 0;
 }

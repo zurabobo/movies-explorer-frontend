@@ -1,0 +1,26 @@
+.about-me__portfolio-list__submenu {
+  visibility: hidden;
+  max-height: 0;
+  transform: scaleY(0);
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  transition: all 0.3s ease-out;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
+  gap: 10px;
+}
+
+.about-me__portfolio-list__submenu_visible {
+  visibility: visible;
+  transform: scaleY(1);
+  max-height: 160vh;
+  transition: all 0.3s ease-in;
+  padding: 0 0 24px;
+}
+
+@media screen and (max-width: 769px) {
+  .about-me__portfolio-list__submenu {
+    justify-content: center;
+  }
+}
