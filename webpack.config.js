@@ -40,6 +40,10 @@ module.exports = {
     clean: true,
   },
 
+  externals: {
+    'react': 'React'
+},
+
   module: {
     rules: [
       { test: /\.(html)$/, use: ['html-loader'] },
