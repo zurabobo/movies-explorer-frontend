@@ -7,7 +7,7 @@ export const MOVIES_API_URL = "https://api.nomoreparties.co/beatfilm-movies";
 export const IMAGE_URL = "https://api.nomoreparties.co";
 
 // export const MAIN_API_URL = 'http://localhost:3000';
-export const MAIN_API_URL = "https://moviesexplorer-api.herokuapp.com";
+export const MAIN_API_URL = "https://movies-explorer-api-yv7u.onrender.com";
 
 export const SCREEN_WIDTH_L = 1280;
 export const SCREEN_WIDTH_M = 768;
