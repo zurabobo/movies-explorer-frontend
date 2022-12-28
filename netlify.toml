@@ -8,5 +8,5 @@
 
 [[redirects]]
 from = "/*"
-to = "https://moviesexplorer-api.herokuapp.com/:splat"
+to = "https://movies-explorer-api-yv7u.onrender.com/:splat"
 status = 200
