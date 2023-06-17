@@ -1,6 +1,7 @@
 import MainRasha from "../images/mainrasha.png";
 import Welbex from "../images/welbex.png";
 import CityBikes from "../images/cityBikes.png";
+import Calendar from "../images/calendar.png";
 
 //export const MAIN_API_URL = 'https://api.movies-explorer.zb.nomoredomains.rocks';
 export const MOVIES_API_URL = "https://api.nomoreparties.co/beatfilm-movies";
@@ -129,6 +130,20 @@ const testProjectsProperties = [
     task: "Test task",
     link: "https://zurabobo.github.io/citybikes-test/",
     image: CityBikes,
+    frontend: "Frontend: React",
+    backend: "Backend: --",
+    database: "Database: --",
+    bundler: "Bundler: --",
+    deadline: "Deadline: 3 days",
+    website: "Demo",
+    script: "JavaScript",
+    bgColor: "#f1e05a",
+  },
+  {
+    cardLabel: "Interview Calendar",
+    task: "Test task",
+    link: "https://interview-calendar-testtak.netlify.app/",
+    image: Calendar,
     frontend: "Frontend: React",
     backend: "Backend: --",
     database: "Database: --",
