@@ -136,8 +136,8 @@ const testProjectsProperties = [
     bundler: "Bundler: --",
     deadline: "Deadline: 3 days",
     website: "Demo",
-    script: "JavaScript",
-    bgColor: "#f1e05a",
+    script: "TypeScript",
+    bgColor: "#3178c6",
   },
   {
     cardLabel: "Interview Calendar",
@@ -150,8 +150,8 @@ const testProjectsProperties = [
     bundler: "Bundler: --",
     deadline: "Deadline: 3 days",
     website: "Demo",
-    script: "TypeScript",
-    bgColor: "#3178c6",
+    script: "JavaScript",
+    bgColor: "#f1e05a",
   },
 ];
 
